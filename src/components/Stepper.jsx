@@ -69,9 +69,10 @@ function Stepper({steps,currentStep}) {
           <div className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-12 w-12 flex items-center justify-center py-3 
             ${step.selected ? " bg-green-600 text-white font-bold border border-green-600 " : "" }`}>
             {/* Display numbers */}
-            {step.completed || (index+1 === newStep.length)
+            {step.selected
               ? (<span className="text-white font-bold text-xl">&#10003;</span>) 
-              : (index+1)}
+              : (index+1)
+            }
           </div>
           <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted 
             ? "text-gray-700" 
@@ -80,7 +81,7 @@ function Stepper({steps,currentStep}) {
             {step.description}
           </div>
         </div>
-        <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.completed 
+        <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.selected 
           ? "border-green-600" 
           : "border-gray-300"}`}>
           {/* Display Line */}
