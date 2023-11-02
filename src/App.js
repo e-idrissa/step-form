@@ -5,6 +5,7 @@ import Account from './components/steps/Account';
 import Details from './components/steps/Details';
 import Final from './components/steps/Final';
 import Payments from './components/steps/Payments';
+import Sample from './components/steps/Sample';
 import { StepperContext } from './contexts/StepperContext';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     "Account Information",
     "Personal Details",
     "Payements",
+    "Sample",
     "Completed"
   ]
   const displayStep = (step)=>{
@@ -27,6 +29,8 @@ function App() {
       case 3:
         return <Payments />
       case 4:
+        return <Sample />
+      case 5:
         return <Final />
       default:
     }

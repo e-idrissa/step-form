@@ -63,25 +63,29 @@ function Stepper({steps,currentStep}) {
     return (
       <div
       key = {index}
-      className={index !== newStep.length-1 ? "w-full flex items-center" : "flex items-center"}
+      className={index !== newStep.length-1 ? `flex items-center justify-center ${index === newStep.length-2 ? "w-fit" : "w-full"}` : "hidden"}
       >
-        <div className="relative flex flex-col items-center text-teal-600">
+        <div className="relative flex flex-col items-center justify-center text-teal-600">
           <div className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-12 w-12 flex items-center justify-center py-3 
-            ${step.selected ? " bg-green-600 text-white font-bold border border-green-600 " : "" }`}>
+            ${step.selected ? " text-green-600 font-bold border border-green-600 " : "" }`}>
             {/* Display numbers */}
-            {step.selected
-              ? (<span className="text-white font-bold text-xl">&#10003;</span>) 
+            {step.completed
+              ? (<span className="text-white bg-green-600 font-bold text-xl w-12 h-12 flex items-center justify-center rounded-full">{index+1}</span>) 
               : (index+1)
             }
           </div>
-          <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted 
+          <div className={`absolute top-0 none text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted 
             ? "text-gray-700" 
             : "text-gray-400"}`}>
             {/* Display Description */}
             {step.description}
           </div>
         </div>
-        <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.selected 
+        <div className={`flex-auto transition duration-500 ease-in-out 
+        ${index+1 !== 4 
+          ? "border-t-2"
+          : "hidden"}
+        ${step.selected 
           ? "border-green-600" 
           : "border-gray-300"}`}>
           {/* Display Line */}
@@ -91,7 +95,7 @@ function Stepper({steps,currentStep}) {
   });
 
   return (
-    <div className="mx-4 p-4 flex justify-between items-center">
+    <div className="mx-16 p-4 flex justify-between items-center">
       {displaySteps}
     </div>
   )

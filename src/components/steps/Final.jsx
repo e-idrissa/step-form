@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { StepperContext } from '../../contexts/StepperContext'
 
 function Final() {
+
+  const userData = useContext(StepperContext);
+  console.log(userData);
+
   return (
     <div className="container md:mt-10">
       <div className="flex flex-col items-center">
